@@ -56,7 +56,6 @@ dependencies {
     val mockk = "1.13.5"
     val roomVersion = "2.5.1"
 
-    implementation("com.android.tools.build:gradle:7.1.3")
     implementation("androidx.core:core-ktx:1.10.0")
 
     //retrofit
@@ -71,6 +70,9 @@ dependencies {
     // coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1") {
+        exclude("org.jetbrains.kotlinx", "kotlinx-coroutines-debug")
+    }
 
     // dagger2
     implementation("com.google.dagger:dagger:$dagger")
@@ -84,7 +86,7 @@ configure<PublishingExtension> {
 
         groupId = "com.github.IthiX"
         artifactId = "holodex-kt"
-        version = "0.1.0"
+        version = "1.0.0"
     }
     repositories {
         mavenLocal()
@@ -94,5 +96,5 @@ configure<PublishingExtension> {
 
 
 fun DependencyHandler.kapt(depName: String) {
-add("kapt", depName)
+    add("kapt", depName)
 }
